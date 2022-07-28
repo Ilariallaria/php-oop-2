@@ -9,22 +9,35 @@ Il pagamento avviene con la carta prepagata che deve contenere un saldo sufficie
  -->
 
 <?php 
- require_once __DIR__.'/Cibo.php';
- require_once __DIR__.'/Accessori.php';
- require_once __DIR__.'/Igiene.php';
+require_once __DIR__.'/Cibo.php';
+require_once __DIR__.'/Accessori.php';
+require_once __DIR__.'/Igiene.php';
+require_once __DIR__.'/UtenteOccasionale.php';
+require_once __DIR__.'/UtenteRegistrato.php';
 
+// esemio di prodotto tipologia Cibo
 $croccantini = new Cibo('Gatto', 12, 'Croccantini', 400);
 $croccantini->composizione_animale = 'si';
 $croccantini->ready_to_use = 'No';
 var_dump($croccantini);
 
+// esemio di prodotto tipologia Accessori
 $spazzola = new Accessori('Cane', 15, 'Spazzola');
 var_dump($spazzola);
 
-$salviette = new Igiene ('Coniglio', 3, 'Salviette Profumate');
+// esemio di prodotto tipologia Igiene
+$salviette = new Igiene ('Coniglio', 3, 'Salviette Detergenti');
 // override
 $salviette->con_profumo = 'Si';
 // override
 $salviette->quantità = 1 . ' pacco, 25 pezzi';
 var_dump($salviette);
+
+// esempio UtenteOccasionale
+$carloBello = new UtenteOccasionale ('Carlo', 'Bello', 'sonobello@gmail.com');
+var_dump($carloBello);
+
+// esempio UtenteRegistrato
+$santaMaria = new UtenteRegistrato ('Santa', 'Maria', 'santamaria@gmail.com');
+var_dump($santaMaria);
 ?>
