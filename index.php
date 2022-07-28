@@ -5,14 +5,15 @@ I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
 L'utente potrà sia comprare i prodotti senza registrarsi, 
 oppure iscriversi e ricevere il 20% di sconto su tutti i prodotti.
 BONUS:
-Il pagamento avviene con la carta prepagata che deve contenere un saldo sufficiente all'acquisto.
+Il pagamento avviene con la carta prepagata che deve contenere un saldo
+sufficiente all'acquisto.
  -->
 
 <?php 
 require_once __DIR__.'/Cibo.php';
 require_once __DIR__.'/Accessori.php';
 require_once __DIR__.'/Igiene.php';
-require_once __DIR__.'/UtenteOccasionale.php';
+require_once __DIR__.'/UtenteAnonimo.php';
 require_once __DIR__.'/UtenteRegistrato.php';
 
 // esemio di prodotto tipologia Cibo
@@ -34,10 +35,19 @@ $salviette->quantità = 1 . ' pacco, 25 pezzi';
 var_dump($salviette);
 
 // esempio UtenteOccasionale
-$carloBello = new UtenteOccasionale ('Carlo', 'Bello', 'sonobello@gmail.com');
-var_dump($carloBello);
+$carloBello = new UtenteAnonimo ('Carlo', 'Bello', 'sonobello@gmail.com');
+$carloBello->aggiungiAlCarrello($salviette);
+$carloBello->totaleCarrello();
+var_dump($carloBello->totaleCarrello());
+
 
 // esempio UtenteRegistrato
+
 $santaMaria = new UtenteRegistrato ('Santa', 'Maria', 'santamaria@gmail.com');
-var_dump($santaMaria);
+$santaMaria->saldo = 50;
+$santaMaria->aggiungiAlCarrello($spazzola);
+$santaMaria->totaleCarrello();
+// var_dump($santaMaria->totaleCarrello());
+$santaMaria->effettuaPagamento();
+var_dump($santaMaria->effettuaPagamento());
 ?>
