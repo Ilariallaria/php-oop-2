@@ -9,8 +9,6 @@ class Utente {
 
     public $sconto = 0;
 
-    public $saldo = 0;
-
     protected $carrello = [];
 
     public function __construct($_nome, $_cognome, $_email) {
@@ -33,11 +31,11 @@ class Utente {
         }
    
         $sommaPrezzi -= $sommaPrezzi * $this->sconto/100;
-        return $sommaPrezzi;
+        return 'il totale del carrello è: ' . $sommaPrezzi;
     }
-    public function effettuaPagamento(){
+    public function effettuaPagamento($cartaUtente){
         $totaleDaPagare = $this->totaleCarrello();
-        if($this->saldo<$totaleDaPagare){
+        if($cartaUtente->saldo < $totaleDaPagare){
             die('saldo della carta insufficiente');
         }else{
             return 'Ordine preso in carico';
