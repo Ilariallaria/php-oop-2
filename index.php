@@ -104,10 +104,12 @@ var_dump($santaMaria->effettuaPagamento($prepagataSanta));
             </ul>
         <?php } ?>
     <?php } catch(Exception $e) { 
-       echo "Controlla il saldo della carta e riprova";
-    // COME MAI, SE SCATENO L'ERRORE, MI RIPORTA IL MESSAGIO NEL LOG MA NON IN PAGINA?
-    // (COME GLI DICO DI FARE NEL CATCH)
-    // HO LASCIATO IL SALDO INSUFFICIENTE APPOSITAMENTE PER FARTI VEDERE COSA MI DICE! 
+        error_log($e->getMessage());
+        echo 'Controlla il saldo della carta e riprova';
     }?>
+   
 </body>
 </html>
+<!-- COME MAI, SE SCATENO L'ERRORE, MI RIPORTA IL MESSAGIO NEL LOG MA NON IN PAGINA?
+(COME GLI DICO DI FARE NEL CATCH)
+HO LASCIATO IL SALDO INSUFFICIENTE APPOSITAMENTE PER FARTI VEDERE COSA MI DICE!  -->
