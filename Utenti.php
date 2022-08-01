@@ -31,13 +31,13 @@ class Utente {
         }
    
         $sommaPrezzi -= $sommaPrezzi * $this->sconto/100;
-        return 'il totale del carrello è: ' . $sommaPrezzi;
+        return $sommaPrezzi;
     }
-    public function effettuaPagamento($cartaUtente){
+    public function effettuaPagamento($CartaPrepagata){
         $totaleDaPagare = $this->totaleCarrello();
-        if($cartaUtente->saldo < $totaleDaPagare){
-            die('saldo della carta insufficiente');
-        }else{
+        if($CartaPrepagata->saldo < $totaleDaPagare){
+            throw new Exception("Utente: $this->cognome, saldo della carta insufficiente");
+        } else {
             return 'Ordine preso in carico';
         }
         

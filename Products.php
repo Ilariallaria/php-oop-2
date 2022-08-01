@@ -1,5 +1,10 @@
 <?php 
+require_once __DIR__.'/IndicazioniDiSmaltimento.php';
+
 class Products {
+
+    use IndicazioniDiSmaltimento;
+
     public $nome_prodotto;
 
     public $tipo_animale;
