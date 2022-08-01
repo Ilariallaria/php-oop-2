@@ -72,14 +72,13 @@ var_dump($santaMaria->totaleCarrello());
 // creo la carta dell'utente
 $prepagataSanta = new CartaPrepagata ('Santa Maria', '123456789', '03/27', '123');
 // carico i sodi
-$prepagataSanta->saldo = 10;
+$prepagataSanta->saldo = 100;
 var_dump($prepagataSanta);
 
 // chiamo la funzione pagamento, che controlla il saldo dell'utente e
 // mi stampa un messaggio a seconda che il saldo sia
 // sufficiente o meno per gli acquisti
-$santaMaria->effettuaPagamento($prepagataSanta);
-var_dump($santaMaria->effettuaPagamento($prepagataSanta));
+
 
 ?>
 
@@ -93,6 +92,7 @@ var_dump($santaMaria->effettuaPagamento($prepagataSanta));
 </head>
 <body>
     <?php try {?>
+        <?php $santaMaria->effettuaPagamento($prepagataSanta);?>
         <?php if($santaMaria->effettuaPagamento($prepagataSanta)==='Ordine preso in carico'){?>
             <div>
                 Ciao <?php echo $santaMaria->nome .' '. $santaMaria->cognome ?>, il tuo ordine è stato preso in carico correttamente. <br> Ecco cosa hai acquistato: 
@@ -110,6 +110,3 @@ var_dump($santaMaria->effettuaPagamento($prepagataSanta));
    
 </body>
 </html>
-<!-- COME MAI, SE SCATENO L'ERRORE, MI RIPORTA IL MESSAGIO NEL LOG MA NON IN PAGINA?
-(COME GLI DICO DI FARE NEL CATCH)
-HO LASCIATO IL SALDO INSUFFICIENTE APPOSITAMENTE PER FARTI VEDERE COSA MI DICE!  -->
